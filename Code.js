@@ -1,4 +1,3 @@
-// TEST
 // Emoji map for event types
 const emojiMap = {
   'interview': '🎙️',
