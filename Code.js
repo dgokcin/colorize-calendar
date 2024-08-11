@@ -16,6 +16,7 @@ const emojiMap = {
   'appointment': '📅',
   'tamir': '🛠️',
   'repair': '🛠️',
+  'payment': '💸',
 };
 
 function ColorEvents() {
@@ -89,6 +90,10 @@ function ColorEvents() {
         Logger.log("Title: " + title + " - Color to print: GRAY");
       }
       else if (originalTitle.includes("tamir") || originalTitle.includes("repair")) {
+        color = CalendarApp.EventColor.PINK;
+        Logger.log("Title: " + title + " - Color to print: PINK");
+      }
+      else if (originalTitle.includes("payment")) {
         color = CalendarApp.EventColor.GREEN;
         Logger.log("Title: " + title + " - Color to print: GREEN");
       }
