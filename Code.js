@@ -2,6 +2,7 @@
 const emojiMap = {
   'interview': '🎙️',
   'flight': '🛫',
+  'bus': '🚌',
   'journey': '🚆',
   'trip': '🚆',
   'stay': '🏠',
@@ -68,7 +69,7 @@ function ColorEvents() {
       if (originalTitle.includes("interview")) {
         color = CalendarApp.EventColor.YELLOW;
         Logger.log("Title: " + title + " - Color to print: YELLOW");
-      } else if (originalTitle.includes("flight") || originalTitle.includes("journey") || originalTitle.includes("trip")) {
+      } else if (originalTitle.includes("flight") || originalTitle.includes("journey") || originalTitle.includes("trip") || originalTitle.includes("bus")) {
         color = CalendarApp.EventColor.ORANGE;
         Logger.log("Title: " + title + " - Color to print: ORANGE");
       } else if (originalTitle.includes("stay") || originalTitle.includes("reservation")) {
