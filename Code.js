@@ -11,6 +11,8 @@ const emojiMap = {
   'meeting': '🤝',
   'catch-up': '☕',
   'video call': '📹',
+  'call': '📞',
+  'ara': '📞',
   'sosyal aktivite': '🎉',
   'paris 2024': '🏅',
   'randevu': '📅',
@@ -65,7 +67,6 @@ function ColorEvents() {
         }
       }
 
-      // Set colors (commented out for now)
       if (originalTitle.includes("interview")) {
         color = CalendarApp.EventColor.YELLOW;
         Logger.log("Title: " + title + " - Color to print: YELLOW");
@@ -78,7 +79,7 @@ function ColorEvents() {
       } else if (originalTitle.includes("holy shred") || originalTitle.includes("holy ride")) {
         color = CalendarApp.EventColor.RED;
         Logger.log("Title: " + title + " - Color to print: RED");
-      } else if (originalTitle.startsWith("🤝 Meeting") || originalTitle.includes("catch-up")) {
+      } else if (originalTitle.startsWith("🤝 Meeting") || originalTitle.includes("catch-up") || originalTitle.includes("video call") || originalTitle.includes("call") || originalTitle.includes("ara")) {
         color = CalendarApp.EventColor.MAUVE;
         Logger.log("Title: " + title + " - Color to print: MAUVE");
       } else if (originalTitle.includes("sosyal aktivite")) {
