@@ -21,6 +21,7 @@ const emojiMap = {
   'tamir': '🛠️',
   'repair': '🛠️',
   'payment': '💸',
+  'gas and electricity': '🔌',
 };
 
 function ColorEvents() {
@@ -88,7 +89,7 @@ function ColorEvents() {
       } else if (originalTitle.includes("paris 2024")) {
         color = CalendarApp.EventColor.BLUE;
         Logger.log("Title: " + title + " - Color to print: BLUE");
-      } else if (originalTitle.includes("randevu") || originalTitle.includes("appointment")) {
+      } else if (originalTitle.includes("randevu") || originalTitle.includes("appointment") || originalTitle.includes("gas and electricity")) {
         color = CalendarApp.EventColor.GRAY;
         Logger.log("Title: " + title + " - Color to print: GRAY");
       }
