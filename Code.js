@@ -8,6 +8,7 @@ const emojiMap = {
   'stay': '🏠',
   'holy shred': '💪',
   'holy ride': '🚵',
+  'padel': '🏸',
   'meeting': '🤝',
   'catch-up': '☕',
   'video call': '📹',
@@ -77,7 +78,7 @@ function ColorEvents() {
       } else if (originalTitle.includes("stay") || originalTitle.includes("reservation")) {
         color = CalendarApp.EventColor.PALE_BLUE;
         Logger.log("Title: " + title + " - Color to print: PALE_BLUE");
-      } else if (originalTitle.includes("holy shred") || originalTitle.includes("holy ride")) {
+      } else if (originalTitle.includes("holy shred") || originalTitle.includes("holy ride") || originalTitle.includes("padel")) {
         color = CalendarApp.EventColor.RED;
         Logger.log("Title: " + title + " - Color to print: RED");
       } else if (originalTitle.startsWith("🤝 Meeting") || originalTitle.includes("catch-up") || originalTitle.includes("video call") || originalTitle.includes("call") || originalTitle.includes("ara")) {
