@@ -70,36 +70,66 @@ function ColorEvents() {
         }
       }
 
-      if (originalTitle.includes("interview")) {
+      // Convert title to lower case for case-insensitive checks
+      const lowerTitle = title.toLowerCase();
+
+      // Regular expressions for whole word matching
+      const regexMap = {
+        "interview": /\binterview\b/i,
+        "flight": /\bflight\b/i,
+        "journey": /\bjourney\b/i,
+        "trip": /\btrip\b/i,
+        "bus": /\bbus\b/i,
+        "stay": /\bstay\b/i,
+        "reservation": /\breservation\b/i,
+        "holy shred": /\bholy shred\b/i,
+        "holy ride": /\bholy ride\b/i,
+        "holy wellness": /\bholy wellness\b/i,
+        "padel": /\bpadel\b/i,
+        "meeting": /\bmeeting\b/i,
+        "catch-up": /\bcatch-up\b/i,
+        "video call": /\bvideo call\b/i,
+        "call": /\bcall\b/i,
+        "ara": /\bara\b/i,
+        "sosyal aktivite": /\bsosyal aktivite\b/i,
+        "paris 2024": /\bparis 2024\b/i,
+        "randevu": /\brandevu\b/i,
+        "appointment": /\bappointment\b/i,
+        "gas and electricity": /\bgas and electricity\b/i,
+        "tamir": /\btamir\b/i,
+        "repair": /\brepair\b/i,
+        "payment": /\bpayment\b/i
+      };
+
+      // Check the updated title for colorization using regex
+      if (regexMap["interview"].test(lowerTitle)) {
         color = CalendarApp.EventColor.YELLOW;
         Logger.log("Title: " + title + " - Color to print: YELLOW");
-      } else if (originalTitle.includes("flight") || originalTitle.includes("journey") || originalTitle.includes("trip") || originalTitle.includes("bus")) {
+      } else if (regexMap["flight"].test(lowerTitle) || regexMap["journey"].test(lowerTitle) || regexMap["trip"].test(lowerTitle) || regexMap["bus"].test(lowerTitle)) {
         color = CalendarApp.EventColor.ORANGE;
         Logger.log("Title: " + title + " - Color to print: ORANGE");
-      } else if (originalTitle.includes("stay") || originalTitle.includes("reservation")) {
+      } else if (regexMap["stay"].test(lowerTitle) || regexMap["reservation"].test(lowerTitle)) {
         color = CalendarApp.EventColor.PALE_BLUE;
         Logger.log("Title: " + title + " - Color to print: PALE_BLUE");
-      } else if (originalTitle.includes("holy shred") || originalTitle.includes("holy ride") || originalTitle.includes("holy wellness") || originalTitle.includes("padel")) {
+      } else if (regexMap["holy shred"].test(lowerTitle) || regexMap["holy ride"].test(lowerTitle) || regexMap["holy wellness"].test(lowerTitle) || regexMap["padel"].test(lowerTitle)) {
         color = CalendarApp.EventColor.RED;
         Logger.log("Title: " + title + " - Color to print: RED");
-      } else if (originalTitle.startsWith("🤝 Meeting") || originalTitle.includes("catch-up") || originalTitle.includes("video call") || originalTitle.includes("call") || originalTitle.includes("ara")) {
+      } else if (regexMap["meeting"].test(lowerTitle) || regexMap["catch-up"].test(lowerTitle) || regexMap["video call"].test(lowerTitle) || regexMap["call"].test(lowerTitle) || regexMap["ara"].test(lowerTitle)) {
         color = CalendarApp.EventColor.MAUVE;
         Logger.log("Title: " + title + " - Color to print: MAUVE");
-      } else if (originalTitle.includes("sosyal aktivite")) {
+      } else if (regexMap["sosyal aktivite"].test(lowerTitle)) {
         color = CalendarApp.EventColor.PALE_GREEN;
         Logger.log("Title: " + title + " - Color to print: PALE_GREEN");
-      } else if (originalTitle.includes("paris 2024")) {
+      } else if (regexMap["paris 2024"].test(lowerTitle)) {
         color = CalendarApp.EventColor.BLUE;
         Logger.log("Title: " + title + " - Color to print: BLUE");
-      } else if (originalTitle.includes("randevu") || originalTitle.includes("appointment") || originalTitle.includes("gas and electricity")) {
+      } else if (regexMap["randevu"].test(lowerTitle) || regexMap["appointment"].test(lowerTitle) || regexMap["gas and electricity"].test(lowerTitle)) {
         color = CalendarApp.EventColor.GRAY;
         Logger.log("Title: " + title + " - Color to print: GRAY");
-      }
-      else if (originalTitle.includes("tamir") || originalTitle.includes("repair")) {
+      } else if (regexMap["tamir"].test(lowerTitle) || regexMap["repair"].test(lowerTitle)) {
         color = CalendarApp.EventColor.PINK;
         Logger.log("Title: " + title + " - Color to print: PINK");
-      }
-      else if (originalTitle.includes("payment")) {
+      } else if (regexMap["payment"].test(lowerTitle)) {
         color = CalendarApp.EventColor.GREEN;
         Logger.log("Title: " + title + " - Color to print: GREEN");
       }
