@@ -25,6 +25,7 @@ const emojiMap = {
   'payment': '💸',
   'start date': '🏁',
   'gas and electricity': '🔌',
+  'ticket': '🎫'
 };
 
 function ColorEvents() {
@@ -100,7 +101,8 @@ function ColorEvents() {
         "gas and electricity": /\bgas and electricity\b/i,
         "tamir": /\btamir\b/i,
         "repair": /\brepair\b/i,
-        "payment": /\bpayment\b/i
+        "payment": /\bpayment\b/i,
+        "ticket": /\bticket\b/i
       };
 
       // Check the updated title for colorization using regex
@@ -119,7 +121,7 @@ function ColorEvents() {
       } else if (regexMap["meeting"].test(lowerTitle) || regexMap["catch-up"].test(lowerTitle) || regexMap["video call"].test(lowerTitle) || regexMap["call"].test(lowerTitle) || regexMap["ara"].test(lowerTitle)) {
         color = CalendarApp.EventColor.MAUVE;
         Logger.log("Title: " + title + " - Color to print: MAUVE");
-      } else if (regexMap["sosyal aktivite"].test(lowerTitle)) {
+      } else if (regexMap["sosyal aktivite"].test(lowerTitle) || regexMap["ticket"].test(lowerTitle)) {
         color = CalendarApp.EventColor.PALE_GREEN;
         Logger.log("Title: " + title + " - Color to print: PALE_GREEN");
       } else if (regexMap["paris 2024"].test(lowerTitle)) {
