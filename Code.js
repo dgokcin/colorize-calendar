@@ -40,15 +40,15 @@ function ColorEvents() {
 
   // Development mode date range override
   if (isDevelopment) {
-    startDate = new Date('2023-08-01'); // YYYY-MM-DD
-    endDate = new Date('2024-08-31');   // YYYY-MM-DD
+    startDate = new Date('2024-09-25'); // YYYY-MM-DD
+    endDate = new Date('2024-09-29');   // YYYY-MM-DD
   }
 
   Logger.log("Date range: " + startDate + " to " + endDate);
 
   Logger.log(today + " " + nextmonth);
 
-  var calendars = CalendarApp.getCalendarsByName("main");
+  var calendars = CalendarApp.getCalendarsByName("main").concat(CalendarApp.getCalendarsByName("work"));
   Logger.log("found number of calendars: " + calendars.length);
 
   for (var i = 0; i < calendars.length; i++) {
@@ -57,9 +57,17 @@ function ColorEvents() {
     var events = calendar.getEvents(startDate, endDate);
     for (var j = 0; j < events.length; j++) {
       var e = events[j];
+      var d = e.getDescription();
       var title = e.getTitle();
       var originalTitle = title;
       var color = null;
+
+      // Check for Reclaim events
+      if (title === '🤝 Meeting' && d.includes('Reclaim')) {
+        console.log("reclaim event found")
+        title = '🤝 busy';
+      }
+
 
       // Check for matching event types and add emojis
       for (const [key, emoji] of Object.entries(emojiMap)) {
