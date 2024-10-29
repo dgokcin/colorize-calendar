@@ -28,6 +28,12 @@ const emojiMap = {
   'ticket': '🎫'
 };
 
+// Helper function to decide if a text starts with an emoji
+function startsWithEmoji(text) {
+  const emojiRegex = /^[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{2B50}\u{2B55}]/u;
+  return emojiRegex.test(text);
+}
+
 function ColorEvents() {
   const isDevelopment = false; // Development flag
   var today = new Date();
@@ -61,25 +67,18 @@ function ColorEvents() {
       var title = e.getTitle();
       var originalTitle = title;
       var color = null;
+      var isReclaim = false
 
       // Check for Reclaim events
       if (title === '🤝 Meeting' && d.includes('Reclaim')) {
-        console.log("reclaim event found");
-        // Ensure no emoji is prepended if one already exists
-        if (!/^[\p{Emoji}]/u.test(title)) {
-          title = '🤝 ' + title;
-        } else {
-          title = '🤝 busy'; // Update to just '🤝 busy' if emoji already present
-        }
+        isReclaim = true
       }
 
       // Check for matching event types and add emojis
       for (const [key, emoji] of Object.entries(emojiMap)) {
         const regex = new RegExp(key, 'i'); // Case-insensitive match
-        if (regex.test(title)) {
-          if (!title.startsWith(emoji)) {
-            title = `${emoji} ${title}`;
-          }
+        if (regex.test(title) && !startsWithEmoji(title)) {
+          title = `${emoji} ${title}`;
           break; // Stop after first match to avoid multiple emojis
         }
       }
@@ -154,12 +153,22 @@ function ColorEvents() {
       if (title !== originalTitle || color) {
         try {
           if (!isDevelopment) {
-            if (title !== originalTitle) {
-              e.setTitle(title);
-              Logger.log("Updated title: " + title);
+            // Handle non-Reclaim events
+            if (!isReclaim) {
+              if (title !== originalTitle) {
+                e.setTitle(title);
+                Logger.log("Updated title: " + title);
+              }
+              if (color) {
+                e.setColor(color);
+              }
             }
-            if (color) {
-              e.setColor(color);
+            // Handling the isReclaim condition
+            if (isReclaim) {
+              e.setTitle("🤝 meeting");
+              e.setDescription("This event has been modified.");
+              e.setVisibility(CalendarApp.Visibility.PRIVATE);
+              Logger.log("Reclaim event modified to private.");
             }
           }
         } catch (error) {
