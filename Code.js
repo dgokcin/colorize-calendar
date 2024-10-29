@@ -64,10 +64,14 @@ function ColorEvents() {
 
       // Check for Reclaim events
       if (title === '🤝 Meeting' && d.includes('Reclaim')) {
-        console.log("reclaim event found")
-        title = '🤝 busy';
+        console.log("reclaim event found");
+        // Ensure no emoji is prepended if one already exists
+        if (!/^[\p{Emoji}]/u.test(title)) {
+          title = '🤝 ' + title;
+        } else {
+          title = '🤝 busy'; // Update to just '🤝 busy' if emoji already present
+        }
       }
-
 
       // Check for matching event types and add emojis
       for (const [key, emoji] of Object.entries(emojiMap)) {
