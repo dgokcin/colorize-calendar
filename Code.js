@@ -26,6 +26,11 @@ const emojiMap = {
   "start date": "🏁",
   "gas and electricity": "🔌",
   ticket: "🎫",
+  masaj: "💆",
+  massage: "💆",
+  "aksiyon al": "🎯",
+  yemek: "🍽️",
+  dinner: "🍽️",
 };
 
 function ColorEvents() {
@@ -103,6 +108,11 @@ function ColorEvents() {
         repair: /\brepair\b/i,
         payment: /\bpayment\b/i,
         ticket: /\bticket\b/i,
+        masaj: /\bmasaj\b/i,
+        massage: /\bmassage\b/i,
+        "aksiyon al": /\baksiyon al\b/i,
+        yemek: /\byemek\b/i,
+        dinner: /\bdinner\b/i,
       };
 
       // Check the updated title for colorization using regex
@@ -127,7 +137,9 @@ function ColorEvents() {
         regexMap["holy shred"].test(lowerTitle) ||
         regexMap["holy ride"].test(lowerTitle) ||
         regexMap["holy wellness"].test(lowerTitle) ||
-        regexMap["padel"].test(lowerTitle)
+        regexMap["padel"].test(lowerTitle) ||
+        regexMap["masaj"].test(lowerTitle) ||
+        regexMap["massage"].test(lowerTitle)
       ) {
         color = CalendarApp.EventColor.BLUE;
         Logger.log("Title: " + title + " - Color to print: BLUE");
@@ -153,7 +165,10 @@ function ColorEvents() {
         regexMap["randevu"].test(lowerTitle) ||
         regexMap["appointment"].test(lowerTitle) ||
         regexMap["gas and electricity"].test(lowerTitle) ||
-        regexMap["start date"].test(lowerTitle)
+        regexMap["start date"].test(lowerTitle) ||
+        regexMap["yemek"].test(lowerTitle) ||
+        regexMap["dinner"].test(lowerTitle) ||
+        regexMap["aksiyon al"].test(lowerTitle)
       ) {
         color = CalendarApp.EventColor.GRAY;
         Logger.log("Title: " + title + " - Color to print: GRAY");
@@ -185,7 +200,7 @@ function ColorEvents() {
             "Error updating event: " +
               error.toString() +
               " - Title: " +
-              originalTitle,
+              originalTitle
           );
           // Optionally, you can continue with the next event
           continue;
@@ -194,4 +209,3 @@ function ColorEvents() {
     }
   }
 }
-
