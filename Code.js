@@ -5,6 +5,7 @@ const emojiMap = {
   bus: "🚌",
   journey: "🚆",
   trip: "🚆",
+  travel: "🚇",
   stay: "🏠",
   "holy shred": "💪",
   "holy ride": "🚵",
@@ -86,6 +87,7 @@ function ColorEvents() {
         flight: /\bflight\b/i,
         journey: /\bjourney\b/i,
         trip: /\btrip\b/i,
+        travel: /\btravel\b/i,
         bus: /\bbus\b/i,
         stay: /\bstay\b/i,
         reservation: /\breservation\b/i,
@@ -123,7 +125,8 @@ function ColorEvents() {
         regexMap["flight"].test(lowerTitle) ||
         regexMap["journey"].test(lowerTitle) ||
         regexMap["trip"].test(lowerTitle) ||
-        regexMap["bus"].test(lowerTitle)
+        regexMap["bus"].test(lowerTitle) ||
+        regexMap["travel"].test(lowerTitle)
       ) {
         color = CalendarApp.EventColor.ORANGE;
         Logger.log("Title: " + title + " - Color to print: ORANGE");
