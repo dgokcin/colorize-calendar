@@ -37,12 +37,12 @@ const emojiMap = {
 function ColorEvents() {
   const isDevelopment = false; // Development flag
   var today = new Date();
-  var nextmonth = new Date();
+  var nextThreeMonths = new Date();
 
-  nextmonth.setDate(nextmonth.getDate() + 31);
+  nextThreeMonths.setMonth(nextThreeMonths.getMonth() + 3);
 
   var startDate = today;
-  var endDate = nextmonth;
+  var endDate = nextThreeMonths;
 
   // Development mode date range override
   if (isDevelopment) {
