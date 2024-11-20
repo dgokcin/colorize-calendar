@@ -52,7 +52,7 @@ function ColorEvents() {
 
   Logger.log("Date range: " + startDate + " to " + endDate);
 
-  Logger.log(today + " " + nextmonth);
+  Logger.log(today + " " + nextThreeMonths);
 
   var calendars = CalendarApp.getCalendarsByName("main");
   Logger.log("found number of calendars: " + calendars.length);
