@@ -29,6 +29,8 @@ const emojiMap = {
   ticket: "🎫",
   masaj: "💆",
   massage: "💆",
+  barber: "💈",
+  "sac kestir": "💈",
   "aksiyon al": "🎯",
   yemek: "🍽️",
   dinner: "🍽️",
@@ -112,6 +114,9 @@ function ColorEvents() {
         ticket: /\bticket\b/i,
         masaj: /\bmasaj\b/i,
         massage: /\bmassage\b/i,
+        barber: /\bbarber\b/i,
+        berber: /\bberber\b/i,
+        "sac kestir": /\bsac kestir\b/i,
         "aksiyon al": /\baksiyon al\b/i,
         yemek: /\byemek\b/i,
         dinner: /\bdinner\b/i,
@@ -122,6 +127,7 @@ function ColorEvents() {
         color = CalendarApp.EventColor.YELLOW;
         Logger.log("Title: " + title + " - Color to print: YELLOW");
       } else if (
+        // Traveling Related Events
         regexMap["flight"].test(lowerTitle) ||
         regexMap["journey"].test(lowerTitle) ||
         regexMap["trip"].test(lowerTitle) ||
@@ -131,22 +137,28 @@ function ColorEvents() {
         color = CalendarApp.EventColor.ORANGE;
         Logger.log("Title: " + title + " - Color to print: ORANGE");
       } else if (
+        // Staying Related Events
         regexMap["stay"].test(lowerTitle) ||
         regexMap["reservation"].test(lowerTitle)
       ) {
         color = CalendarApp.EventColor.PALE_BLUE;
         Logger.log("Title: " + title + " - Color to print: PALE_BLUE");
       } else if (
+        // Sports and Wellness Related Events
         regexMap["holy shred"].test(lowerTitle) ||
         regexMap["holy ride"].test(lowerTitle) ||
         regexMap["holy wellness"].test(lowerTitle) ||
         regexMap["padel"].test(lowerTitle) ||
         regexMap["masaj"].test(lowerTitle) ||
-        regexMap["massage"].test(lowerTitle)
+        regexMap["massage"].test(lowerTitle) ||
+        regexMap["barber"].test(lowerTitle) ||
+        regexMap["berber"].test(lowerTitle) ||
+        regexMap["sac kestir"].test(lowerTitle)
       ) {
         color = CalendarApp.EventColor.BLUE;
         Logger.log("Title: " + title + " - Color to print: BLUE");
       } else if (
+        // Meetings, catch-ups, video calls, calls
         regexMap["meeting"].test(lowerTitle) ||
         regexMap["catch-up"].test(lowerTitle) ||
         regexMap["video call"].test(lowerTitle) ||
@@ -156,6 +168,7 @@ function ColorEvents() {
         color = CalendarApp.EventColor.MAUVE;
         Logger.log("Title: " + title + " - Color to print: MAUVE");
       } else if (
+        // Social Activities, Tickets
         regexMap["sosyal aktivite"].test(lowerTitle) ||
         regexMap["ticket"].test(lowerTitle)
       ) {
@@ -165,6 +178,7 @@ function ColorEvents() {
         color = CalendarApp.EventColor.BLUE;
         Logger.log("Title: " + title + " - Color to print: BLUE");
       } else if (
+        // Appointments, Dates, Food, Actions
         regexMap["randevu"].test(lowerTitle) ||
         regexMap["appointment"].test(lowerTitle) ||
         regexMap["gas and electricity"].test(lowerTitle) ||
@@ -176,6 +190,7 @@ function ColorEvents() {
         color = CalendarApp.EventColor.GRAY;
         Logger.log("Title: " + title + " - Color to print: GRAY");
       } else if (
+        // Repairs
         regexMap["tamir"].test(lowerTitle) ||
         regexMap["repair"].test(lowerTitle)
       ) {
