@@ -19,6 +19,7 @@ const emojiMap = {
   call: "📞",
   ara: "📞",
   "sosyal aktivite": "🎉",
+  casino : "🎰",
   "paris 2024": "🏅",
   randevu: "📅",
   reservation: "📅",
@@ -103,6 +104,7 @@ function ColorEvents() {
         call: /\bcall\b/i,
         ara: /\bara\b/i,
         "sosyal aktivite": /\bsosyal aktivite\b/i,
+        "casino": /\bcasino\b/i,
         "paris 2024": /\bparis 2024\b/i,
         randevu: /\brandevu\b/i,
         appointment: /\bappointment\b/i,
@@ -170,7 +172,8 @@ function ColorEvents() {
       } else if (
         // Social Activities, Tickets
         regexMap["sosyal aktivite"].test(lowerTitle) ||
-        regexMap["ticket"].test(lowerTitle)
+        regexMap["ticket"].test(lowerTitle) ||
+        regexMap["casino"].test(lowerTitle)
       ) {
         color = CalendarApp.EventColor.PALE_GREEN;
         Logger.log("Title: " + title + " - Color to print: PALE_GREEN");
