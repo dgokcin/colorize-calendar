@@ -227,7 +227,7 @@ function getEventColor(input) {
 // 4. Logs all changes (real or simulated)
 // ==============================================
 function ColorEvents() {
-  const isDevelopment = true;
+  const isDevelopment = false;
   const today = new Date();
   const nextThreeMonths = new Date();
   nextThreeMonths.setMonth(nextThreeMonths.getMonth() + 3);
