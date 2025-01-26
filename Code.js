@@ -1,6 +1,11 @@
-// ======================
-// UNIFIED ACTIVITY CONFIG
-// ======================
+// ==============================================
+// ACTIVITY CONFIGURATION
+// ==============================================
+// Defines activities with their associated:
+// - emoji: Visual identifier
+// - variants: Keywords in different languages (en/tr)
+// - category: For color coding and grouping
+// ==============================================
 const activities = {
   interview: {
     emoji: "🎙️",
@@ -149,9 +154,12 @@ const activities = {
   },
 };
 
-// ======================
-// CATEGORY COLOR MAP
-// ======================
+// ==============================================
+// CATEGORY COLOR MAPPING
+// ==============================================
+// Maps activity categories to Google Calendar's
+// predefined event colors for visual organization
+// ==============================================
 const categoryColors = {
   food: CalendarApp.EventColor.GRAY,
   wellness: CalendarApp.EventColor.BLUE,
@@ -170,9 +178,13 @@ const categoryColors = {
   interview: CalendarApp.EventColor.YELLOW,
 };
 
-// ======================
-// SIMPLIFIED EMOJI HANDLING
-// ======================
+// ==============================================
+// EMOJI DETECTION
+// ==============================================
+// Searches event title for activity keywords and
+// returns corresponding emoji if found
+// Returns empty string if no match
+// ==============================================
 function getEmoji(input) {
   const lowerInput = input.toLowerCase();
   return (
@@ -186,9 +198,13 @@ function getEmoji(input) {
   );
 }
 
-// ======================
-// SIMPLIFIED COLOR HANDLING
-// ======================
+// ==============================================
+// COLOR DETECTION
+// ==============================================
+// Searches event title for activity keywords and
+// returns corresponding calendar color if found
+// Returns null if no match
+// ==============================================
 function getEventColor(input) {
   const lowerInput = input.toLowerCase();
   const activity = Object.values(activities).find((activity) =>
@@ -201,9 +217,15 @@ function getEventColor(input) {
   return activity ? categoryColors[activity.category] : null;
 }
 
-// ======================
-// UPDATED COLOR EVENTS
-// ======================
+// ==============================================
+// CALENDAR EVENT PROCESSOR
+// ==============================================
+// Main function that:
+// 1. Gets events from specified date range
+// 2. Adds emojis to event titles if missing
+// 3. Sets event colors based on categories
+// 4. Logs all changes (real or simulated)
+// ==============================================
 function ColorEvents() {
   const isDevelopment = true;
   const today = new Date();
@@ -227,7 +249,7 @@ function ColorEvents() {
           ? `${emoji} ${originalTitle}`
           : originalTitle;
 
-      // Update event if changed
+      // Update event if title or color changes needed
       if (newTitle !== originalTitle || color) {
         try {
           if (!isDevelopment) {
