@@ -132,8 +132,8 @@ const activities = {
     category: "wellness",
   },
   action: {
-    emoji: "🎯",
-    variants: { en: [], tr: ["aksiyon al"] },
+    emoji: "⏰",
+    variants: { en: ["reminder"], tr: ["aksiyon al"] },
     category: "reminders",
   },
   dinner: {
@@ -217,6 +217,18 @@ function getEventColor(input) {
   return activity ? categoryColors[activity.category] : null;
 }
 
+const findMatchingActivity = (input) => {
+  const lowerInput = input.toLowerCase();
+  return Object.values(activities).find((activity) =>
+    Object.entries(activity.variants).some(([lang, variants]) =>
+      variants.some(
+        (variant) =>
+          variant && new RegExp(`\\b${variant}\\b`, "i").test(lowerInput)
+      )
+    )
+  );
+};
+
 // ==============================================
 // CALENDAR EVENT PROCESSOR
 // ==============================================
@@ -235,7 +247,6 @@ function ColorEvents() {
   const [startDate, endDate] = isDevelopment
     ? [new Date("2025-01-26"), new Date("2025-01-28")]
     : [today, nextThreeMonths];
-
 
   CalendarApp.getCalendarsByName("main").forEach((calendar) => {
     calendar.getEvents(startDate, endDate).forEach((event) => {
