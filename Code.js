@@ -24,7 +24,7 @@ const activities = {
   },
   train: {
     emoji: "🚆",
-    variants: { en: ["journey", "trip"], tr: [] },
+    variants: { en: ["journey", "trip", "train"], tr: [] },
     category: "travel",
   },
   metro: {
@@ -152,6 +152,30 @@ const activities = {
     },
     category: "maintenance",
   },
+  deliveryWindow: {
+    emoji: "📦",
+    variants: {
+      en: ["delivery window"],
+      tr: [],
+    },
+    category: "food",
+  },
+  cleaning: {
+    emoji: "🧼",
+    variants: {
+      en: ["cleaning day"],
+      tr: [],
+    },
+    category: "maintenance",
+  },
+  studyBlock: {
+    emoji: "🎓",
+    variants: {
+      en: ["study block"],
+      tr: [],
+    },
+    category: "education",
+  },
 };
 
 // ==============================================
@@ -176,6 +200,7 @@ const categoryColors = {
   entertainment: CalendarApp.EventColor.PALE_GREEN,
   event: CalendarApp.EventColor.RED,
   interview: CalendarApp.EventColor.YELLOW,
+  education: CalendarApp.EventColor.YELLOW,
 };
 
 // ==============================================
